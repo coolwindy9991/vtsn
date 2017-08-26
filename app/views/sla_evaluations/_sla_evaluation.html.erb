@@ -1,0 +1,11 @@
+<tr id="evaluation-<%= sla_evaluation.id %>">
+  <td class="user">
+    <% if !current_user.nil? && policy(sla_evaluation).destroy? %>
+      <%= link_to 'Destroy', sla_evaluation, method: :delete, data: {confirm: 'Are you sure?'} %>
+    <% end %>
+    <%= link_to 'View', sla_evaluation_path(sla_evaluation.id, :evaluation_type => 1) %>
+  </td>
+  <td class="user"><%= sla_evaluation.airline_code.upcase %></td>
+  <td class="user"><%= sla_evaluation.flight_no %></td>
+  <td class="timestamp"><%= my_formatted_date sla_evaluation.evaluation_date %></td>
+</tr>

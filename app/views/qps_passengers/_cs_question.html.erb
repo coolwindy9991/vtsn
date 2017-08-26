@@ -1,0 +1,6 @@
+<tr id="evaluation-<%= cs_evaluation.id %>">
+  <td class="user"><%= link_to cs_evaluation.id, questionnaire_path(cs_evaluation.id, cs_evaluation: cs_evaluation.id) %></td>
+  <td class="user"><%= link_to cs_evaluation.staff_id, cs_evaluation.staff_id %></td>
+  <td class="content"><%= cs_evaluation.staff_name %></td>
+  <td class="timestamp"><%= cs_evaluation.evaluation_date %></td>
+</tr>

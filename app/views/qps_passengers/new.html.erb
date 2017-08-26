@@ -1,0 +1,86 @@
+<% provide(:title, "Passengers Handling QPS Form") %>
+<h1>Passengers Handling QPS</h1>
+<h2>Supervisor: <%= current_user.name %></h2>
+<%= form_for(:qps_passenger, url: qps_passengers_path) do |f| %>
+<div class="row">
+  <!--<div class="col-md-6 col-md-offset-3">-->
+    <div class='form-group'>
+      <%= render 'shared/error_messages', object: @qps_passenger %>
+      <div class="col-xs-4">
+      <%= f.label :evaluation_date, "Evaluation Date" %>
+      <%= f.text_field :evaluation_date, 'data-provide' => 'datepicker', 'data-date-format'=>"dd/mm/yyyy" %>
+      </div>
+      <div class="col-xs-4">
+      <%= f.label :flight_no, "Flight No." %>
+      <%= f.text_field :flight_no %>
+      </div>
+      <div class="col-xs-4">
+      <%= f.label :staff_id, "Staff ID" %>
+      <%= f.text_field :staff_id %>
+      </div>
+      <div class="col-xs-12">
+      <%= f.label :comment, "Comment" %>
+      <%= f.text_field :comment %>
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table">
+        <tr class="header">
+          <th colspan='8'>Check-in</th>
+        </tr>
+        <tr class="header">
+          <% (1..7).each do |i| %>
+            <th><%= label_tag "#{i}" %><br/><%= radio_button_tag "qps_passenger[check_in]", i %></th>
+          <% end %>
+        </tr>
+        <tr class="header">
+          <th colspan='8'>Boarding</th>
+        </tr>
+        <tr class="header">
+          <% (1..7).each do |i| %>
+            <th><%= label_tag "#{i}" %><br/><%= radio_button_tag "qps_passenger[boarding]", i %></th>
+          <% end %>
+        </tr>
+        <!--TRANSIT/TRANSFER-->
+        <tr class="header">
+          <th colspan='8'>Transit/transfer</th>
+        </tr>
+        <tr class="header">
+          <% (1..7).each do |i| %>
+            <th><%= label_tag "#{i}" %><br/><%= radio_button_tag "qps_passenger[transit_transfer]", i %></th>
+          <% end %>
+        </tr>
+        <!--ARRIVAL-->
+        <tr class="header">
+          <th colspan='8'>Arrival</th>
+        </tr>
+        <tr class="header">
+          <% (1..7).each do |i| %>
+            <th><%= label_tag "#{i}" %><br/><%= radio_button_tag "qps_passenger[arrival]", i %></th>
+          <% end %>
+        </tr>
+        <!--LOST AND FOUND-->
+        <tr class="header">
+          <th colspan='8'>Lost and Found</th>
+        </tr>
+        <tr class="header">
+          <% (1..7).each do |i| %>
+            <th><%= label_tag "#{i}" %><br/><%= radio_button_tag "qps_passenger[lost_and_found]", i %></th>
+          <% end %>
+        </tr>
+        <!--SSR-->
+        <tr class="header">
+          <th colspan='8'>Specical Assistant</th>
+        </tr>
+        <tr class="header">
+          <% (1..7).each do |i| %>
+            <th><%= label_tag "#{i}" %><br/><%= radio_button_tag "qps_passenger[special_assistant]", i %></th>
+          <% end %>
+        </tr>
+      </table>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  </div>
+<!--</div>-->
+<% end %>

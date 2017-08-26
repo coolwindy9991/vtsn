@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  airline_code: MyString
+  category: MyString
+  kpi: MyString
+  target: 9.99
+
+two:
+  airline_code: MyString
+  category: MyString
+  kpi: MyString
+  target: 9.99

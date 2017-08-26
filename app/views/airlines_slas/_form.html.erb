@@ -1,0 +1,41 @@
+<%= form_for @airlines_sla, :html => {class: "form-horizontal"} do |f| %>
+    <div class="form-group">
+        <!--<span class="col-xs-2 control-label"></span>-->
+        <div class="col-xs-12">
+            <div class="form-group row">
+                <%= f.label :airline_code, class: "col-xs-2 control-label"%>
+                <div class="col-xs-3">
+                    <%= f.text_field :airline_code, class: "form-control" %>
+                </div>
+                <%= f.label :category, class: "col-xs-2 control-label" %>
+                <div class="col-xs-5">
+                    <%= f.text_field :category, class: "form-control" %>
+                </div>            
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :kpi, class: "col-xs-2 control-label" %>
+        <div class="col-xs-10">
+            <%= f.text_field :kpi, class: "form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <!--<span class="col-xs-2 control-label"></span>-->
+        <div class="col-xs-12">
+            <div class="form-group row">
+                <%= f.label :target, class: "col-xs-2 control-label" %>
+                <div class="col-xs-3">
+                    <%= f.text_field :target, class: "form-control" %>
+                </div>
+                <%= f.label :target_unit, "Unit", class: "col-xs-1 col-xs-offset-1 control-label"  %>
+                <div class="col-xs-5"> 
+                    <%= f.text_field :target_unit, class: "form-control" %>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <%= f.submit "Save details", class: "btn btn-primary" %>
+<% end %>

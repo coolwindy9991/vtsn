@@ -1,0 +1,28 @@
+<% provide(:title, "SLA Evaluation Form") %>
+<h1>SLA Evaluation</br>
+<%= @sla_evaluation.airline_code.upcase %><%= @sla_evaluation.flight_no %>-<%= @sla_evaluation.evaluation_date.strftime("%d/%m/%Y") %></br>
+Evaluator: <%= @sla_evaluation.user.name %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    Details:<br/>
+    <%= sanitize(@sla_evaluation.other_information) %>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr class="header">
+        <th>No.</th>
+        <th>KPI</th>
+        <th>Result</th>
+        <th>Notes</th>
+      </tr>
+        <% (1..@questionnaires.size).each do |i| %>
+          <tr>
+            <td><%= i %></td>
+            <% sla_kpi = AirlinesSla.find_by(:airline_code => @sla_evaluation.airline_code.downcase,
+                                            :id => @questionnaires[i-1].question_id) %>
+            <%= render partial: 'questionnaires/questionnaire', locals: {q: @questionnaires[i-1], sla_kpi: sla_kpi} %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

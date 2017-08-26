@@ -1,0 +1,24 @@
+<% @questionnaires = Questionnaire.where(:evaluation_id => cs_evaluation.id, :evaluation_type => 0) %>
+<tr id="evaluation-<%= cs_evaluation.id %>">
+  <td class="user">
+    <% if policy(cs_evaluation).destroy? %>
+      <%= link_to 'Destroy', cs_evaluation, method: :delete, data: {confirm: "Are you sure?"} %>
+    <% end %>
+  </td> <!-- hardcode -->
+  <td class="content"><%= cs_evaluation.user.name %></td>
+  <td class="content"><%= cs_evaluation.staff_id %></td>
+  <td class="content"><%= staff_name(cs_evaluation.staff_id) %></td>
+  <td class="timestamp"><%= my_formatted_date(cs_evaluation.evaluation_date) %></td>
+  <td class="content"><%= cs_evaluation.flight_no.upcase %></td>
+  <% @questionnaires.each do |q| %>
+    <td>
+      <% if q.answer == 0 %>
+        N
+      <% elsif q.answer == 1 %>
+        Y
+      <% else %>
+        N/A
+      <% end %>
+    </td>
+  <% end %>
+</tr>

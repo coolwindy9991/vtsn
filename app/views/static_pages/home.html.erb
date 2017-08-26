@@ -1,0 +1,49 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      
+      <section class="micropost_form">
+        <%= render 'shared/cs_evaluation_form' %>
+      </section>
+      
+      <section class="micropost_form">
+        <%= form_tag new_qps_passenger_path, :method => :get do %>
+          <%= submit_tag "QPS Passenger",class: "btn btn-primary" %>
+        <% end %>
+      </section>
+      
+      <section class="micropost_form">
+        <%= form_tag new_airline_briefing_path, :method => :get do %>
+          <%= submit_tag "Add Briefing Note",class: "btn btn-primary" %>
+        <% end %>
+      </section>
+      
+      <section class="micropost_form">
+        <%= form_tag new_sla_evaluation_path, :method => :get, :class => 'form-inline' do %>
+          <div class='form-group'>
+            <%= label_tag "Airline 2-letter code" %>
+            <%= text_field_tag :airline_code,'', placeholder: "Enter airline code", class: 'form-control' %>
+          </div>
+          <%= submit_tag "Evaluate SLA",class: "btn btn-primary" %>
+        <% end %>
+      </section>
+        </aside>
+          <div class="col-md-8">
+            <h3>Activities</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to VTSN Airlines Center</h1>
+    <%= link_to "QPS Passengers", qps_passengers_path, class: "btn btn-primary" %><br/><br/>
+    <%= link_to "CS evaluations", cs_evaluations_path, class: "btn btn-primary" %><br/><br/>
+    <%= link_to "Log in", login_path, class: "btn btn-primary" %>
+  </div>
+
+  <%= link_to image_tag("rails.png", alt: "Rails logo"),
+              'http://rubyonrails.org/' %>
+<% end %>

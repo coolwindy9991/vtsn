@@ -1,0 +1,35 @@
+<% provide(:title, "Cs Evaluation Form") %>
+<h1>7 Steps Evaluation for Staff</h1>
+<h2>Evaluator: <%= current_user.name %></h2>
+<% @cs_questions = CsSopQuestion.all %>
+<%= form_for(:cs_evaluation, url: cs_evaluations_path) do |f| %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class='form-group'>
+      <%= render 'shared/error_messages', object: @cs_evaluation %>
+      <%= f.label :evaluation_date, "Evaluation Date" %>
+      <%= f.text_field :evaluation_date, 'data-provide' => 'datepicker', 'data-date-format'=>"dd/mm/yyyy" %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :flight_no, "Flight No." %>
+      <%= f.text_field :flight_no %>
+    </div>
+    <%= f.label :staff_id, "Staff ID" %>
+    <%= f.text_field :staff_id %>
+  </div>
+  <div class="form-group col-md-6 col-md-offset-3">
+    <% (1..@cs_questions.size).each do |i| %>
+      <div class="row">
+        <%= label_tag @cs_questions[i-1].question.html_safe %><br/>
+        <%= label_tag "Yes" %>
+        <%= radio_button_tag "cs_evaluation[question_#{i}]".to_sym, 1 %>
+        <%= label_tag "No" %>
+        <%= radio_button_tag "cs_evaluation[question_#{i}]".to_sym, 0 %>
+        <%= label_tag "N/A" %>
+        <%= radio_button_tag "cs_evaluation[question_#{i}]".to_sym, 2, :checked %>
+      </div>
+    <% end %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>

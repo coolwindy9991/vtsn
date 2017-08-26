@@ -1,0 +1,19 @@
+<% @questionnaires= Questionnaire.where(:evaluation_id => cs_evaluation.id, :evaluation_type => 0) %>
+<Row>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="Number">cs_evaluation.id</Data></Cell>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="String"><%= cs_evaluation.user.name %></Data></Cell>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="String"><%= cs_evaluation.staff_id %></Data></Cell>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="String"><%= staff_name(cs_evaluation.staff_id) %></Data></Cell>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="String"><%= my_formatted_date(cs_evaluation.evaluation_date) %></Data></Cell>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="String"><%= cs_evaluation.flight_no %></Data></Cell>
+  <Cell ss:StyleID="cell_border"><Data ss:Type="Number"><%= @evaluations_count[cs_evaluation.staff_id] unless @evaluations_count.blank? %></Data></Cell>
+  <% @questionnaires.each do |q| %>
+    <Cell ss:StyleID="cell_border"><Data ss:Type="String"><% if q.answer== 0 %>
+      No
+    <% elsif q.answer== 1 %>
+      Yes
+    <% else %>
+      N/A
+    <% end %></Data></Cell>
+  <% end %>
+</Row>

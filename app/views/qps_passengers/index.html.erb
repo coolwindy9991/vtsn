@@ -1,0 +1,58 @@
+<div class = "row">
+  <aside class="col-md-2">
+   <%= form_tag qps_passengers_path, :method => :get, :class => 'form-inline' do %>
+      <%= date_field_tag :from_date, 
+                          (params[:from_date] || Date.today.beginning_of_week),
+                          class: 'form-control' %>
+      <%= date_field_tag :to_date, 
+                          (params[:to_date] || Date.today),
+                          class: 'form-control' %>
+      <!--<div class="row">-->
+        <div class="col-xs-12">
+          <%= radio_button_tag :team, 0, (params[:team].to_i == 0 || params[:team].nil?) %>
+          <%= label_tag "All teams" %><br/>
+          <%= radio_button_tag :team, 1, params[:team].to_i == 1 %>
+          <%= label_tag "Team 1"%><br/>
+          <%= radio_button_tag :team, 2, params[:team].to_i == 2 %>
+          <%= label_tag "Team 2"%><br/>
+          <%= radio_button_tag :team, 3, params[:team].to_i == 3 %>
+          <%= label_tag "Team 3"%><br/>
+          <%= radio_button_tag :team, 4, params[:team].to_i == 4 %>
+          <%= label_tag "Team 4"%><br/>
+        </div>
+      <!--</div>-->
+      <%= submit_tag "Search",class: "btn-primary" %>
+    <% end %>
+  </aside>
+  
+  <div class="col-md-10">
+  <h3 class='center'>QPS Passenger Flights
+  <%= my_formatted_date(Date.parse(params[:from_date])) unless params[:from_date].blank? %><br/>
+  </h3>
+  <%= link_to 'Download as Excel', cs_evaluations_path(format: :xlsx, :params => params) %>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tr class="header">
+        <% if @qps_passengers %>
+          <th></th>
+          <th>Evaluator</th>
+          <th>Date</th>
+          <th>Flight No</th>
+          <th>Check In</th>
+          <th>Boarding</th>
+          <th>Transit</th>
+          <th>Arrival</th>
+          <th>LnF</th>
+          <th>Spec.<br/>Assistant</th>
+        </tr>
+        <%= render @qps_passengers if @qps_passengers %>
+      <% else %>
+        <th>Team</th>
+        <th>Staff ID</th>
+        <th>Staff Name</th>
+        <%= render :partial => 'user', :collection => @none if @none %>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>

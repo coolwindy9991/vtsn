@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  airline_code: 
+  evaluation_date: 2016-05-08
+
+two:
+  user_id: 
+  airline_code: 
+  evaluation_date: 2016-05-08

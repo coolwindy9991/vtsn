@@ -1,0 +1,14 @@
+<h1>7-Steps CS Procedure</h1>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tr class="header">
+      <th>No.</th>
+      <th>Staff ID</th>
+      <th>Staff Name</th>
+      <th>Evaluation Date</th>
+    </tr>
+    <% if CsEvaluations.find_by(evaluator: user).any? %>
+      <%= render cs_evaluations %>
+    <% end %>
+  </table>
+</div>

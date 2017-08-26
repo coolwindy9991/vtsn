@@ -1,0 +1,28 @@
+<% if q.evaluation_type == 0 %>
+  <div class="col-xs-offset-3 col-xs-4">
+    <%= CsSopQuestion.find(q.question_id).question %>
+  </div>
+  <div class="col-xs-5">
+    <% if q.answer == 0 %>
+      No
+    <% elsif q.answer == 1 %>
+      Yes
+    <% else %>
+      N/A
+    <% end %>
+  </div>
+<% else %>
+  <td><%= sla_kpi.kpi %></td>
+  <td>
+    <% if q.answer == 0 %>
+      No
+    <% elsif q.answer == 1 %>
+      Yes
+    <% else %>
+      N/A
+    <% end %>
+  </td>
+  <td>
+    <%= q.comment %>
+  </td>
+<% end %>

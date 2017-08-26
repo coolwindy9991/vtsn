@@ -1,0 +1,2 @@
+module QpsPassengersHelper
+end

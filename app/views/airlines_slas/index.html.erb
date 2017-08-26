@@ -1,0 +1,15 @@
+<% provide(:title, 'Airlines SLA') %>
+<h1>All KPI</h1>
+<h2><%= link_to "New Airlines KPI", new_airlines_sla_path %></h2>
+<ul class="users">
+  <h2>
+    <% @airlines_slas.each do |as| %>
+      <%= link_to as.airline_code.upcase, airlines_slas_path(:airline_code => as.airline_code) %>
+    <% end %>
+  </h2>
+  <% unless @sla_kpis.nil? %>
+    <%= render @sla_kpis %>
+  <% end %>
+</ul>
+
+<h2><%= link_to "New Airlines KPI", new_airlines_sla_path %></h2>

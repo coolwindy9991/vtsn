@@ -1,0 +1,13 @@
+<h1>Evaluation Summary -
+<%= @questionnaires %>
+<% if @questionnaires[0].evaluation_type == 0 %>
+  7-Step CS SOP</br>
+  <%= @evaluation.staff_id %> - <%= @evaluation.staff_name %>
+<% else %>
+  Airlines SLA</br>
+  <!--<%= @evaluation.airline_code %><%= @evaluation.flight_no %>-->
+<% end %>
+</h1>
+<div class="row questionnaires">
+  <%= render @questionnaires %>
+</div>

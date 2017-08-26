@@ -1,0 +1,19 @@
+<%= form_for @airline_briefing, :html => {class: "form-horizontal"} do |f| %>
+    <div class="form-group">
+        <!--<span class="col-xs-2 control-label"></span>-->
+        <div class="col-xs-12">
+            <div class="form-group row">
+                <%= f.label :airline_code, class: "col-xs-2 control-label"%>
+                <div class="col-xs-3">
+                    <%= f.text_field :airline_code, class: "form-control" %>
+                </div>
+                <%= f.label :content, class: "col-xs-2 control-label" %>
+                <div class="col-xs-5">
+                <%= f.text_area :content, :class => "tinymce", :rows => 10, :cols => 150 %>
+                </div>            
+            </div>
+        </div>
+    <%= tinymce %>
+    </div>
+    <%= f.submit "Save details", class: "btn btn-primary" %>
+<% end %>

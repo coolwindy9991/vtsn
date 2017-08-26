@@ -1,0 +1,13 @@
+<% provide(:title, 'Airlines SLA') %>
+<h1>All briefing</h1>
+<ul class="users">
+  <h2>
+    <% @airline_codes.each do |ac| %>
+      <%= link_to ac.airline_code.upcase, airline_briefings_path(:airline_code => ac.airline_code) %>
+    <% end %>
+  </h2>
+   <% unless @airline_briefings.nil? %>
+    <%= render @airline_briefings %>
+  <% end %>
+</ul>
+<h2><%= link_to "New briefing", new_airline_briefing_path %></h2>

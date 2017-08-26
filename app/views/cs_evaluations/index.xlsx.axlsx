@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "CS Evaluations") do |sheet|
+  sheet.add_row ["ID", "Evaluator", "Staff ID", "Staff", "Date", "Flight", "S1", "S2", "S3", "S4", "S5", "S6", "S7"]
+  @cs_evaluations.each do |cs|
+    questionnaires= Questionnaire.where(:evaluation_id => cs.id, :evaluation_type => 0)
+    row_data = [cs.id, cs.user.name, cs.staff_id.to_s, staff_name(cs.staff_id), my_formatted_date(cs.evaluation_date), cs.flight_no.upcase]
+    questionnaires.each do |q|
+      if q.answer== 0
+        row_data << 'No'
+      elsif q.answer== 1
+        row_data << 'Yes'
+      else
+        row_data << 'N/A'
+      end
+    end
+    sheet.add_row row_data, types: [:integer, :string, :string, nil]
+  end
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flight_no: MyText
+  airline_code_id: 
+  day_ops: MyString
+
+two:
+  flight_no: MyText
+  airline_code_id: 
+  day_ops: MyString

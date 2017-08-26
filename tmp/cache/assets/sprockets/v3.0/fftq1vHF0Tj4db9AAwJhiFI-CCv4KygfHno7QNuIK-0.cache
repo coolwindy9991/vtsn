@@ -1,0 +1,16 @@
+I"ÿ(function() {
+  $(document).on("focus", "[data-provide~='datepicker']", function(e) {
+    -$(this).datepicker;
+    -({
+      format: "dd-mmm-yyyy"
+    });
+    -({
+      weekStart: 1
+    });
+    return -{
+      autoclose: true
+    };
+  });
+
+}).call(this);
+:ET

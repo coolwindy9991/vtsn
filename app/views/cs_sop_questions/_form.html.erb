@@ -1,0 +1,11 @@
+<%= form_for(@cs_sop_question) do |f| %>
+    <%= f.label :question %><br>
+    <%= f.text_field :question %>
+    
+    <%= f.label :is_active, class: "checkbox inline" do %>
+    <%= f.check_box :is_active %><span>Is Active</span>
+    <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

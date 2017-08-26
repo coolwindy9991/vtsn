@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  evaluator: MyString
+  staff_id: MyString
+  staff_name: MyString
+  evaluation_date: 2016-05-04
+
+two:
+  evaluator: MyString
+  staff_id: MyString
+  staff_name: MyString
+  evaluation_date: 2016-05-04

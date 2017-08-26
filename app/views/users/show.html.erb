@@ -1,0 +1,33 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <div>
+      <h1>
+        <%= gravatar_for @user, size: 50 %>
+        <%= @user.name %> - <%= @user.staff_id %><br/>
+      </h1>
+      </div>
+      
+    </section>
+      <div class='container'>
+        <%= link_to "Sla Evaluations", sla_evaluations_path, :class => 'btn btn-primary' %>
+      </div>
+  </aside>
+  <div class="col-md-8">
+    <h1>7-Steps CS Procedure</h1>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tr class="header">
+          <th>No.</th>
+          <th>Evaluator</th>
+          <th>Staff ID</th>
+          <th>Staff Name</th>
+          <th>Evaluation Date</th>
+          <th>Flight No</th>
+        </tr>
+        <%= render @cs_evaluations if @user.cs_evaluations.any? %>
+      </table>
+    </div>
+  </div>
+</div>
