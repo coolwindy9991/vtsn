@@ -10,22 +10,9 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: pv_bay_development
-  username: ubuntu
-  password: password
-  host:     <%= ENV['IP'] %>
-  
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: pv_bay_test
-  username: ubuntu
-  password: password
-  host:     <%= ENV['IP'] %>
-
-production:
-  <<: *default
-  database: pv_bay_production
+        adapter: postgresql
+        encoding: SQL_ASCII
+        database: pv_bay_development
+        pool: 5
+        username: ubuntu
+        password: password
